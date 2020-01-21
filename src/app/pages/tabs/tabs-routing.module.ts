@@ -14,8 +14,14 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../tab1/tab1.module').then(m => m.Tab1PageModule)
-          }
-        ]
+          } ,
+
+          {
+            path: 'agregar',
+            loadChildren: () =>
+              import('../agregar/agregar.module').then(m => m.AgregarPageModule)
+          } ,
+             ]
       },
       {
         path: 'tab2',
@@ -27,16 +33,7 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: 'tab3',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
-          }
-        ]
-      },
+      // se borro el tab3
       {
         path: '',
         redirectTo: '/tabs/tab1',
