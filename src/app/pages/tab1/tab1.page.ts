@@ -14,46 +14,50 @@ export class Tab1Page {
 
   listas: any[] = [];
 
-  constructor( public deseosService: DeseosService, private router: Router, private alertCtrl: AlertController ) {
+  constructor( public deseosService: DeseosService,
+               private router: Router,
+               private alertCtrl: AlertController ) {
   }
 
-  // navegar a la pantalla para navegar
-    async agregarLista() {
-    // this.router.navigateByUrl('/tabs/tab1/agregar');
+  // con " async " transformamos el método en una promesa
+  async agregarLista() {
+  // this.router.navigateByUrl('/tabs/tab1/agregar');
 
-    const ALERT = await  this.alertCtrl.create({
-      header: 'Nueva lista',
-      inputs: [
-        {
-          name: 'titulo',
-          type: 'text',
-          placeholder: 'Nombre de la lista'
+  const ALERT = await  this.alertCtrl.create({
+    header: 'Nueva lista',
+    inputs: [
+      {
+        name: 'titulo',
+        type: 'text',
+        placeholder: 'Nombre de la lista'
+      }
+    ],
+    buttons: [
+      {
+        text: 'Cancelar' ,
+        role: 'cancel' , // role por defecto para cerrar
+        // función " handler " que se ejecuta cuando se cierre la alerta
+        // o se toque el botón
+        handler: () => {
+          console.log('Cancelar');
         }
-      ],
-      buttons: [
-        {
-          text: 'Cancelar' ,
-          role: 'cancel' ,
-          handler: () => {
-            console.log('Cancelar');
+      },
+      {
+        text: 'Crear',
+        handler: ( data ) => {
+          console.log(data);
+          // Si viene vacio que no haga nada
+          if ( data.titulo.lenght === 0) {
+            return;
           }
-        },
-        {
-          text: 'Crear',
-          handler: ( data ) => {
-            console.log(data);
-            // Si viene vacio que no haga nada
-            if ( data.titulo.lenght === 0) {
-              return;
-            }
-            this.deseosService.crearLista( data.titulo );
-            // Tengo que crear la lista
-          }
+          // Tengo que crear la lista
+          this.deseosService.crearLista( data.titulo );
         }
-      ]
-    });
+      }
+    ]
+  });
 
-    ALERT.present();
+  ALERT.present();
 
   }
 
