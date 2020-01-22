@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -12,7 +13,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab1Page {
 
-  listas: any[] = [];
+  // listas: any[] = [];
 
   constructor( public deseosService: DeseosService,
                private router: Router,
@@ -56,9 +57,7 @@ export class Tab1Page {
       }
     ]
   });
-
   ALERT.present();
-
   }
 
 }

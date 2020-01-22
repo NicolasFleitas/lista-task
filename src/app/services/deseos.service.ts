@@ -28,6 +28,14 @@ export class DeseosService {
       return NUEVALISTA.id; // id para moverme a la pagina de agregar
     }
 
+    // filtramos todo el arreglo donde no coincida el id
+    borrarLista(lista: Lista) {
+      this.listas = this.listas.filter(listaData => {
+        return  listaData.id !== lista.id;
+      });
+      this.guardarStorage();
+    }
+
     obtenerLista(id: string | number) {
       // Aseguramos que siempre sea un número
       id = Number(id);
