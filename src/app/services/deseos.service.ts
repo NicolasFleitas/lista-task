@@ -24,7 +24,18 @@ export class DeseosService {
       const NUEVALISTA = new Lista(titulo);
       this.listas.push( NUEVALISTA );
       this.guardarStorage();
+
+      return NUEVALISTA.id; // id para moverme a la pagina de agregar
     }
+
+    obtenerLista(id: string | number) {
+      // Aseguramos que siempre sea un número
+      id = Number(id);
+
+      return this.listas.find(listaData => listaData.id === id );
+    }
+
+
 
     // Método que guarda en el localstorage
     guardarStorage() {
@@ -32,6 +43,8 @@ export class DeseosService {
       // Convertimos un JSON a un String
       localStorage.setItem('data', JSON.stringify(this.listas) );
     }
+
+
 
     // al abrir y cargar si hay info
     cargarStorage() {

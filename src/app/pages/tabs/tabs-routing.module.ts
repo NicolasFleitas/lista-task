@@ -17,7 +17,7 @@ const routes: Routes = [
           } ,
 
           {
-            path: 'agregar',
+            path: 'agregar/:listaId',
             loadChildren: () =>
               import('../agregar/agregar.module').then(m => m.AgregarPageModule)
           } ,

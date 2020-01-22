@@ -21,8 +21,6 @@ export class Tab1Page {
 
   // con " async " transformamos el método en una promesa
   async agregarLista() {
-  // this.router.navigateByUrl('/tabs/tab1/agregar');
-
   const ALERT = await  this.alertCtrl.create({
     header: 'Nueva lista',
     inputs: [
@@ -51,7 +49,9 @@ export class Tab1Page {
             return;
           }
           // Tengo que crear la lista
-          this.deseosService.crearLista( data.titulo );
+          const listaId = this.deseosService.crearLista( data.titulo );
+
+          this.router.navigateByUrl(`/tabs/tab1/agregar/${ listaId }`);
         }
       }
     ]
