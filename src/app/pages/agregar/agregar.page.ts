@@ -39,9 +39,7 @@ export class AgregarPage implements OnInit {
   }
 
   cambioCheck(item: ListaItem) {
-    // filter: metodo que regresa una coleccion de elementos que cumplan
-    // cierta condición
-
+    // filter: metodo que regresa una coleccion de elementos que cumplan cierta condición
     // retornar todos los itemData que completado sea false
     const PENDIENTES = this.lista.items
                     .filter( itemData => !itemData.completado )
@@ -54,8 +52,9 @@ export class AgregarPage implements OnInit {
       this.lista.terminadaEn = null;
       this.lista.terminada = false;
     }
-    // console.log({PENDIENTES});
+
     console.log({PENDIENTES});
+    
     this.deseosService.guardarStorage();
     console.log(this.deseosService.listas);
     }

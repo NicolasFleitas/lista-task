@@ -34,9 +34,7 @@ export class Tab1Page {
     buttons: [
       {
         text: 'Cancelar' ,
-        role: 'cancel' , // role por defecto para cerrar
-        // función " handler " que se ejecuta cuando se cierre la alerta
-        // o se toque el botón
+        role: 'cancel' ,
         handler: () => {
           console.log('Cancelar');
         }
